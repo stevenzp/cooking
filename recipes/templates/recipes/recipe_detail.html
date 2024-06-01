@@ -1,0 +1,43 @@
+{% extends "recipes/layout.html" %}
+
+{% block body %}
+
+<h1 class="text-center">{{ object.title }}</h1>
+
+<div class="container my-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <img class="card-img-top" src="{{ object.img.url }}" alt="Card image cap">
+        <div class="card-body">
+          <h1 class="card-subtitle mb-2">{{ object.author }}</h1>
+          <h6 class="card-subtitle mb-2 text-muted">{{ object.updated_at | date:"F d, Y" }}</h6>
+          <p class="card-text mb-2" style="font-style: italic;"> Ingredients: {{ object.ingredients }}</p>
+          <p class="card-text font-weight-bold" style="font-weight: bold;">
+            {{ object.steps | linebreaks }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-3">
+    <div class="col-4 text-center">
+      <a class="btn btn-outline-info" href="{% url 'recipes-update' object.id %}">Update</a>
+      <a class="btn btn-outline-danger" href="{% url 'recipes-delete' object.id %}">Delete</a>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<img src="{{ book.cover.url }}" width = '300'/>
+
+
+
+
+{% endblock %}
+
+
